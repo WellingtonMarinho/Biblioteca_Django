@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{%block titulo%}{{livro.titulo}} | {%endblock%}
+
+{% block conteudo %}
+<h1 class="mt-5">{{ livro.titulo }} </h1>
+
+      <dl>
+        <dt>ID</dt>
+        <dd>{{ livro.id }}</dd>
+
+        <dt>Nome</dt>
+        <dd>{{ livro.titulo }}</dd>
+
+        <dt>Autor</dt>
+        <dd>{{ livro.autor }}</dd>
+
+        <dt>Editora</dt>
+        <dd>{{ livro.editora }}</dd>
+
+        <dt>Categoria</dt>
+        <dd>{{ livro.categoria }}</dd>
+
+        <dt>Descrição</dt>
+        <dd>{{ livro.descricao }}</dd>
+
+        <dt>Estante</dt>
+        <dd>{{ livro.estante }}</dd>
+
+        <dt>Prateleira</dt>
+        <dd>{{ livro.prateleira }}</dd>
+      <br>
+      <br>
+
+      </dl>
+ {% if livro.imagem %}
+      <p>
+         <dt>Capa</dt>
+      <br>
+      <br>
+        <img src="{{ livro.imagem.url }}" style="max-with: 20px; height: auto;">
+      </p>
+{% endif %}
+
+
+{%endblock%}

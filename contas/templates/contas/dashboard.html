@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+    {%block titulo%}Home de {{user}} | {%endblock%}
+
+
+    {% block conteudo %}
+
+{% if user.is_authenticated %}
+
+    <h1 class="mt-3 mr-3">Olá {{ user.first_name }} {{ user.last_name }}</h1><p>
+        Seu nome de usuário é {{user}}.
+    </p>
+    Aqui você pode salvar e catalogar seus livros.
+
+    Ao cadastrar um livro, lembre sempre de conferir a estante e prateleira onde ele se encontra.
+    <br>
+    <br>
+
+            <form method="get" action="{% url 'busca' %}">
+              <div class="form-group row">
+                <div class="col-12">
+                  <input class="form-control"
+                         type="search" value="{{ request.GET.termo }}"
+                         id="search-input"
+                         placeholder="Digite o nome do livro ou autor."
+                         name="termo">
+                                {% include 'parciais/_messages.html' %}
+
+                </div>
+              </div>
+            </form>
+
+
+    <a href="{% url 'cadastrar_livro'%}">Clique aqui</a> para cadastrar livros
+    <br>
+    <br>
+    <br>
+     <a href="{% url 'logout' %}">clique aqui</a> para sair da conta.
+    <h1 class="mt-5">Minha biblioteca</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>Categoria</th>
+            <th>Estante</th>
+            <th>Prateleira</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for livro in livros %}
+        <tr>
+                <td>{{ livro.id }}</td>
+                <td>
+                    <a href="{% url 'ver_livro' livro.id %}">{{ livro.titulo }}</a>
+                </td>
+                <td>{{livro.autor}}</td>
+                <td>{{ livro.editora}}</td>
+                <td>{{ livro.categoria }}</td>
+                <td>{{ livro.estante }}</td>
+                <td>{{ livro.prateleira }}</td>
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+          {% for pagina in livros.paginator.page_range %}
+            {% if livros.number == pagina %}
+              <li class="page-item active">
+                  <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{pagina}}</a>
+                </li>
+            {%else%}
+                <li class="page-item">
+                  <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{pagina}}</a>
+                 </li>
+            {%endif%}
+          {%endfor %}
+      </ul>
+    </nav>
+
+{%else%}
+    <p>Para acessa a dashboard é preciso logar. <br>
+        <a href="{% url 'login' %}">clique aqui</a> para fazer login.
+        </p>
+{%endif%}
+
+{% endblock %}
