@@ -30,3 +30,8 @@ class FormLivro(forms.ModelForm):
     class Meta:
         model = Livro
         exclude = ('mostrar',)
+
+class FormCategoria(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        exclude = ('',)

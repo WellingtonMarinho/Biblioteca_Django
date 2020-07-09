@@ -21,7 +21,7 @@
                   <input class="form-control"
                          type="search" value="{{ request.GET.termo }}"
                          id="search-input"
-                         placeholder="Digite o nome do livro ou autor."
+                         placeholder="Digite o nome do livro ou autor para fazer uma pesquisa."
                          name="termo">
                                 {% include 'parciais/_messages.html' %}
 
@@ -33,8 +33,7 @@
     <a href="{% url 'cadastrar_livro'%}">Clique aqui</a> para cadastrar livros
     <br>
     <br>
-    <br>
-     <a href="{% url 'logout' %}">clique aqui</a> para sair da conta.
+     <a href="{% url 'logout' %}">Clique aqui</a> para sair da conta.
     <h1 class="mt-5">Minha biblioteca</h1>
 
     <table class="table">

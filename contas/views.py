@@ -144,6 +144,7 @@ def busca(request):
                   {'livros': livros})
 
 
+@login_required(redirect_field_name='login')
 def ver_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
 
@@ -153,4 +154,9 @@ def ver_livro(request, livro_id):
     return render(request, 'contas/ver_livro.html', {
         'livro': livro
     }) # Retorna e renderiza os iteráveis.
+
+
+@login_required(redirect_field_name='login')
+def criar_categoria(request):
+    pass
 
