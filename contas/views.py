@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required #Permite a exibição de dashboard apenas para logados
-from .models import FormLivro
+from .models import FormLivro, FormCategoria
 from django.db.models import Q
 from .models import Livro
 from django.core.paginator import Paginator
@@ -157,6 +157,19 @@ def ver_livro(request, livro_id):
 
 
 @login_required(redirect_field_name='login')
-def criar_categoria(request):
-    pass
+def cadastrar_categoria(request):
+    if request.method != "POST":
+        formulario = FormCategoria
+        return render(request, 'contas/cadastrar_categoria.html',
+                      {'form': formulario})
+
+    formulario = FormCategoria(request.POST, request.FILES)
+    if not formulario.is_valid():
+        messages.error(request, 'Erro ao enviar formulário.')
+        formulario = FormCategoria(request.POST)
+        return render(request, 'contas/dashboard.hmtl',
+                      {'form': formulario})
+    messages.success(request, f'Categoria {request.POST.get("nome")} salvo com sucesso!')
+    formulario.save()
+    return redirect('cadastrar_livro')
 

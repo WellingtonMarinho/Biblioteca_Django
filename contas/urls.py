@@ -10,6 +10,6 @@ urlpatterns = [
     path('cadastrar_livro/', views.cadastrar_livro, name='cadastrar_livro'),
     path('busca/', views.busca, name='busca'),
     path('<int:livro_id>', views.ver_livro, name='ver_livro'),
-    path('criar_categoria/', views.criar_categoria, name='criar_categoria')
+    path('cadastrar_categoria/', views.cadastrar_categoria, name='cadastrar_categoria')
 
 ]
