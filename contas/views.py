@@ -13,9 +13,6 @@ from django.http import Http404
 
 
 def login(request):
-    if auth.login:
-        return redirect('dashboard')
-
     if request.method != 'POST':
         return render(request, 'contas/login.html')
 
@@ -93,7 +90,7 @@ def cadastro(request):
     return redirect('login')
 
 
-@login_required(redirect_field_name='login')
+@login_required(login_url='/login/')
 def dashboard(request):
     livros = Livro.objects.order_by('-id').filter(
         mostrar=True

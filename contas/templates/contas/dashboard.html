@@ -6,6 +6,11 @@
 
 {% if user.is_authenticated %}
 
+    <div align="right">
+        <a href="{% url 'cadastrar_livro'%}">Clique aqui</a> para cadastrar livros
+        <br>
+        <a href="{% url 'logout' %}">Clique aqui</a> para sair da conta.
+    </div>
     <h1 class="mt-3 mr-3">Olá {{ user.first_name }} {{ user.last_name }}</h1><p>
         Seu nome de usuário é {{user}}.
     </p>
@@ -29,11 +34,6 @@
               </div>
             </form>
 
-
-    <a href="{% url 'cadastrar_livro'%}">Clique aqui</a> para cadastrar livros
-    <br>
-    <br>
-     <a href="{% url 'logout' %}">Clique aqui</a> para sair da conta.
     <h1 class="mt-5">Minha biblioteca</h1>
 
     <table class="table">
@@ -60,6 +60,8 @@
                 <td>{{ livro.categoria }}</td>
                 <td>{{ livro.estante }}</td>
                 <td>{{ livro.prateleira }}</td>
+                <td> Update </td
+                <td> Delete </td>
 
             </tr>
 
