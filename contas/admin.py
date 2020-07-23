@@ -11,6 +11,7 @@ class LivroAdmin(admin.ModelAdmin):
     search_fields = ('titulo', 'autor')
     list_editable = ('mostrar',)
 
+
 admin.site.register(Categoria)
 admin.site.register(Livro, LivroAdmin)
 

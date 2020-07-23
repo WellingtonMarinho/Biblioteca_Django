@@ -3,9 +3,8 @@ from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required #Permite a exibição de dashboard apenas para logados
-from .models import FormLivro, FormCategoria
+from .models import FormLivro, FormCategoria, Livro, Categoria
 from django.db.models import Q
-from .models import Livro
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
@@ -92,6 +91,7 @@ def cadastro(request):
 
 @login_required(login_url='/login/')
 def dashboard(request):
+    usuario = request.user
     livros = Livro.objects.order_by('-id').filter(
         mostrar=True
     )
@@ -122,6 +122,7 @@ def cadastrar_livro(request):
     return redirect('dashboard')
 
 
+@login_required(redirect_field_name='login')
 def busca(request):
     termo = request.GET.get('termo').strip()
 
@@ -175,3 +176,7 @@ def cadastrar_categoria(request):
 
 def sobre(request):
     return render(request, 'contas/sobre.html')
+
+
+def atualizar(request, id_livro):
+    pass

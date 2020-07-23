@@ -28,18 +28,6 @@
 
         <dt>Prateleira</dt>
         <dd>{{ livro.prateleira }}</dd>
-      <br>
-      <br>
-
       </dl>
- {% if livro.imagem %}
-      <p>
-         <dt>Capa</dt>
-      <br>
-      <br>
-        <img src="{{ livro.imagem.url }}" style="max-with: 20px; height: auto;">
-      </p>
-{% endif %}
-
 
 {%endblock%}
