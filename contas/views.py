@@ -16,7 +16,6 @@ def login(request):
     if request.method != 'POST':
         return render(request, 'contas/login.html')
 
-
     usuario = request.POST.get('usuario')
     senha = request.POST.get('senha')
 
@@ -173,3 +172,6 @@ def cadastrar_categoria(request):
     formulario.save()
     return redirect('cadastrar_livro')
 
+
+def sobre(request):
+    return render(request, 'contas/sobre.html')
