@@ -91,7 +91,6 @@ def cadastro(request):
 
 @login_required(login_url='/login/')
 def dashboard(request):
-    usuario = request.user
     livros = Livro.objects.order_by('-id').filter(
         mostrar=True
     )
@@ -104,7 +103,7 @@ def dashboard(request):
                   {'livros': livros})
 
 
-@login_required(redirect_field_name='login')
+@login_required(login_url='/login/')
 def cadastrar_livro(request):
     if request.method != 'POST':
         form = FormLivro()
@@ -122,7 +121,7 @@ def cadastrar_livro(request):
     return redirect('dashboard')
 
 
-@login_required(redirect_field_name='login')
+@login_required(login_url='/login/')
 def busca(request):
     termo = request.GET.get('termo').strip()
 
@@ -144,7 +143,7 @@ def busca(request):
                   {'livros': livros})
 
 
-@login_required(redirect_field_name='login')
+@login_required(login_url='/login/')
 def ver_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
 
@@ -156,7 +155,7 @@ def ver_livro(request, livro_id):
     }) # Retorna e renderiza os iteráveis.
 
 
-@login_required(redirect_field_name='login')
+@login_required(login_url='/login/')
 def cadastrar_categoria(request):
     if request.method != "POST":
         formulario = FormCategoria
@@ -178,5 +177,20 @@ def sobre(request):
     return render(request, 'contas/sobre.html')
 
 
-def atualizar(request, id_livro):
-    pass
+def atualizar(request, livro_id):
+    post = get_object_or_404(request, livro_id)
+    form = PostForm()
+'''
+    if request.method != 'POST':
+        form = FormLivro()
+        return render(request, 'contas/cadastrar_livro.html', {'form': form})
+
+    form = FormLivro(request.POST, request.FILES)
+
+    if Livro.objects.get(id=livro_id):
+        Livro.objects.filter(id=livro_id).update(form)
+    else:
+        messages.error('ERRRRROU')
+    return redirect('dashboard')
+'''
+

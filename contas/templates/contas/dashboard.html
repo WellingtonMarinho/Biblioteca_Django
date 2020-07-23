@@ -60,7 +60,7 @@
                 <td>{{ livro.categoria }}</td>
                 <td>{{ livro.estante }}</td>
                 <td>{{ livro.prateleira }}</td>
-                <td> <a href="#">Update</a> </td>
+                <td> <a href="{% url 'atualizar' livro.id %}">Update</a> </td>
                 <td> <a href="{% url 'atualizar' livro.id %}">Delete</a> </td>
 
             </tr>
