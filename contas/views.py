@@ -13,6 +13,9 @@ from django.http import Http404
 
 
 def login(request):
+    if auth.login:
+        return redirect('dashboard')
+
     if request.method != 'POST':
         return render(request, 'contas/login.html')
 
