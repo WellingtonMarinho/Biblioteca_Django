@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-    {%block titulo%}Home de {{user}} | {%endblock%}
+    {%block titulo%} {{user}} | {%endblock%}
 
 
     {% block conteudo %}
@@ -10,6 +10,12 @@
         <a href="{% url 'cadastrar_livro' %}">Clique aqui</a> para cadastrar livros
         <br>
         <a href="{% url 'logout' %}">Clique aqui</a> para sair da conta.
+    </div>
+    <br>
+    <div align="right">
+
+
+
     </div>
     <h1 class="mt-3 mr-3">Olá {{ user.first_name }} {{ user.last_name }}</h1><p>
         Seu nome de usuário é {{user}}.
@@ -55,9 +61,9 @@
         <tr>
                 <td>{{ livro.id }}</td>
                 <td>
-                    <a href="{% url 'ver_livro' livro.id %}">{{ livro.titulo }}</a>
+                        <a href="{% url 'ver_livro' livro.id %}">{{ livro.titulo }}</a>
                 </td>
-                <td>{{livro.autor}}</td>
+                <td>{{ livro.autor }}</td>
                 <td>{{ livro.editora}}</td>
                 <td>{{ livro.categoria }}</td>
                 <td>{{ livro.estante }}</td>

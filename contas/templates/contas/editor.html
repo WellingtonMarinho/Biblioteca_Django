@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{%block titulo%}Editar {{ livro.titulo }} {%endblock%}
+
 {% block conteudo %}
 <div class="container">
     <form action="{% url 'editor' livro.id %}" method="POST" enctype="multipart/form-data">
