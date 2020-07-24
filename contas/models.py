@@ -31,7 +31,6 @@ class Livro(models.Model):
 class FormLivro(forms.ModelForm):
     class Meta:
         model = Livro
-
         exclude = ('mostrar',)
 
 

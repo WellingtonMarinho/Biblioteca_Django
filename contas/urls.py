@@ -13,6 +13,5 @@ urlpatterns = [
     path('<int:livro_id>', views.ver_livro, name='ver_livro'),
     path('cadastrar_categoria/', views.cadastrar_categoria, name='cadastrar_categoria'),
     path('sobre/', views.sobre, name='sobre'),
-    path('atualiza/<int:livro_id>', views.atualizar, name='atualizar'),
-
+    path('editor/<int:livro_id>', views.editor, name='editor'),
 ]

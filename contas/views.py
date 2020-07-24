@@ -92,7 +92,7 @@ def dashboard(request):
     livros = Livro.objects.order_by('-id').filter(
         mostrar=True
     )
-    paginator = Paginator(livros, 15)
+    paginator = Paginator(livros, 10)
 
     page = request.GET.get('p')
     livros = paginator.get_page(page)
@@ -175,57 +175,18 @@ def sobre(request):
     return render(request, 'contas/sobre.html')
 
 
-def atualizar(request, livro_id):
+def editor(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
     form = FormLivro(instance=livro)
 
     if request.method != 'POST':
-        return render(request, 'contas/dashboard.html', {'form': form, 'livro': livro})
+        return render(request, 'contas/editor.html', {'form': form, 'livro': livro})
 
     form = FormLivro(request.POST, instance=livro)
 
     if not form.is_valid():
-        return render(request, 'contas/dashboard.html', {'form': form, 'livro': livro})
+        return render(request, 'contas/sobre.html', {'form': form, 'livro': livro})
 
     livro.save()
-
     return redirect('dashboard')
 
-
-''' if request.method != 'POST':
-        form = FormLivro()
-        return render(request, 'contas/cadastrar_livro.html', {'form': form})
-
-    form = FormLivro(request.POST, request.FILES)
-
-    if Livro.objects.filter(id=livro_id):
-        Livro.objects.filter(id=livro_id).update({'form': form})
-
-    else:
-        messages.error('Deu errado!')
-    return redirect('dashboard')'''
-
-''' livro = get_object_or_404(Livro, id=livro_id)
-    form = FormLivro(instance=livro)
-
-    if request.method == 'POST':
-        form = FormLivro(request.POST, instance=livro)
-
-        if form.is_valid():
-            livro = form.save(commit=False)
-            livro.titulo = form.cleaned_data['titulo']
-            livro.autor = form.cleaned_data['autor']
-            livro.editora = form.cleaned_date['editora']
-            livro.edicao = form.cleaned_data['descricao']
-            livro.estante = form.cleaned_data['estante']
-            livro.prateleira = form.cleaned_date['prateleira']
-            livro.categoria = form.cleaned_data['categoria']
-
-            livro.save()
-            return redirect('dashboard')
-        else:
-            return render(request, 'dashboard.html', {'form': form, 'livro': livro})
-
-    elif request.method == 'GET':
-        return render(request, 'contas/dashboard.html', {'form': form, 'livro': livro})
-'''

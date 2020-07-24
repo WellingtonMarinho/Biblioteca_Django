@@ -7,7 +7,7 @@
 {% if user.is_authenticated %}
 
     <div align="right">
-        <a href="{% url 'cadastrar_livro'%}">Clique aqui</a> para cadastrar livros
+        <a href="{% url 'cadastrar_livro' %}">Clique aqui</a> para cadastrar livros
         <br>
         <a href="{% url 'logout' %}">Clique aqui</a> para sair da conta.
     </div>
@@ -60,8 +60,8 @@
                 <td>{{ livro.categoria }}</td>
                 <td>{{ livro.estante }}</td>
                 <td>{{ livro.prateleira }}</td>
-                <td> <a href="{% url 'atualizar' livro.id %}">Update</a> </td>
-                <td> <a href="{% url 'atualizar' livro.id %}">Delete</a> </td>
+                <td><a href="{% url 'editor' livro.id %}">Editar</a></td>
+                <td>{{ livro.prateleira }}</td>
 
             </tr>
 
