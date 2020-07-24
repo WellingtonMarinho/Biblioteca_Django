@@ -176,7 +176,23 @@ def sobre(request):
 
 
 def atualizar(request, livro_id):
+    livro = get_object_or_404(Livro, id=livro_id)
+    form = FormLivro(instance=livro)
+
     if request.method != 'POST':
+        return render(request, 'contas/dashboard.html', {'form': form, 'livro': livro})
+
+    form = FormLivro(request.POST, instance=livro)
+
+    if not form.is_valid():
+        return render(request, 'contas/dashboard.html', {'form': form, 'livro': livro})
+
+    livro.save()
+
+    return redirect('dashboard')
+
+
+''' if request.method != 'POST':
         form = FormLivro()
         return render(request, 'contas/cadastrar_livro.html', {'form': form})
 
@@ -187,7 +203,7 @@ def atualizar(request, livro_id):
 
     else:
         messages.error('Deu errado!')
-    return redirect('dashboard')
+    return redirect('dashboard')'''
 
 ''' livro = get_object_or_404(Livro, id=livro_id)
     form = FormLivro(instance=livro)
