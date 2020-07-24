@@ -14,4 +14,5 @@ urlpatterns = [
     path('cadastrar_categoria/', views.cadastrar_categoria, name='cadastrar_categoria'),
     path('sobre/', views.sobre, name='sobre'),
     path('editor/<int:livro_id>', views.editor, name='editor'),
+    path('excluir/<int:livro_id>', views.excluir, name='excluir'),
 ]

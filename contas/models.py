@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django import forms
-from django.urls import reverse
 
 
 class Categoria(models.Model):

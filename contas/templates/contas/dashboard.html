@@ -46,6 +46,8 @@
             <th>Categoria</th>
             <th>Estante</th>
             <th>Prateleira</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
         </thead>
         <tbody>
@@ -61,7 +63,7 @@
                 <td>{{ livro.estante }}</td>
                 <td>{{ livro.prateleira }}</td>
                 <td><a href="{% url 'editor' livro.id %}">Editar</a></td>
-                <td>{{ livro.prateleira }}</td>
+                <td><a href="{% url 'excluir' livro.id %}">Excluir</a></td>
 
             </tr>
 

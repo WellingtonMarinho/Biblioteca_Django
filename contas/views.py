@@ -175,6 +175,7 @@ def sobre(request):
     return render(request, 'contas/sobre.html')
 
 
+@login_required(login_url='/login/')
 def editor(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
     form = FormLivro(instance=livro)
@@ -188,5 +189,13 @@ def editor(request, livro_id):
         return render(request, 'contas/sobre.html', {'form': form, 'livro': livro})
 
     livro.save()
+    return redirect('dashboard')
+
+
+@login_required(login_url='/login/')
+def excluir(request, livro_id):
+    livro = Livro.objects.get(id=livro_id)
+    livro.delete()
+
     return redirect('dashboard')
 
