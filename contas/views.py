@@ -1,13 +1,11 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required #Permite a exibição de dashboard apenas para logados
-from .models import FormLivro, FormCategoria, Livro, Categoria
+from .models import FormLivro, FormCategoria, Livro
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
 from django.http import Http404
 
 
@@ -178,9 +176,6 @@ def sobre(request):
 
 
 def atualizar(request, livro_id):
-    post = get_object_or_404(request, livro_id)
-    form = PostForm()
-'''
     if request.method != 'POST':
         form = FormLivro()
         return render(request, 'contas/cadastrar_livro.html', {'form': form})
@@ -192,5 +187,28 @@ def atualizar(request, livro_id):
     else:
         messages.error('ERRRRROU')
     return redirect('dashboard')
-'''
 
+''' livro = get_object_or_404(Livro, id=livro_id)
+    form = FormLivro(instance=livro)
+
+    if request.method == 'POST':
+        form = FormLivro(request.POST, instance=livro)
+
+        if form.is_valid():
+            livro = form.save(commit=False)
+            livro.titulo = form.cleaned_data['titulo']
+            livro.autor = form.cleaned_data['autor']
+            livro.editora = form.cleaned_date['editora']
+            livro.edicao = form.cleaned_data['descricao']
+            livro.estante = form.cleaned_data['estante']
+            livro.prateleira = form.cleaned_date['prateleira']
+            livro.categoria = form.cleaned_data['categoria']
+
+            livro.save()
+            return redirect('dashboard')
+        else:
+            return render(request, 'dashboard.html', {'form': form, 'livro': livro})
+
+    elif request.method == 'GET':
+        return render(request, 'contas/dashboard.html', {'form': form, 'livro': livro})
+'''

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django import forms
-from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Categoria(models.Model):
@@ -23,7 +23,6 @@ class Livro(models.Model):
     data_criacao = models.DateTimeField(default=timezone.now)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
     mostrar = models.BooleanField(default=True)
-    #usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo
