@@ -182,10 +182,11 @@ def atualizar(request, livro_id):
 
     form = FormLivro(request.POST, request.FILES)
 
-    if Livro.objects.get(id=livro_id):
-        Livro.objects.filter(id=livro_id).update(form)
+    if Livro.objects.filter(id=livro_id):
+        Livro.objects.filter(id=livro_id).update({'form': form})
+
     else:
-        messages.error('ERRRRROU')
+        messages.error('Deu errado!')
     return redirect('dashboard')
 
 ''' livro = get_object_or_404(Livro, id=livro_id)
