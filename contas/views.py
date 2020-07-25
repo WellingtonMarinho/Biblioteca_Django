@@ -89,6 +89,7 @@ def cadastro(request):
 
 @login_required(login_url='/login/')
 def dashboard(request):
+    user = request.user
     livros = Livro.objects.order_by('-id').filter(
         mostrar=True
     )
@@ -203,6 +204,7 @@ def excluir(request, livro_id):
     livro.delete()
 
     return redirect('dashboard')
+
 
 @login_required(login_url='/login/')
 def ordenar_por_titulo(request):
