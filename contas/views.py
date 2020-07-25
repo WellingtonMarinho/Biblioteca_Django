@@ -132,11 +132,16 @@ def busca(request):
          mostrar=True
          ) # Reune os dados da Class Livro, ordena e armazena na var livros
 
+    if livros is None or not livros:
+        messages.error(request, 'Nenhum título ou autor encontrado.')
+        return redirect('dashboard')
+
     paginator = Paginator(livros, 12) # Ref a paginação e quantos iteraveis serão exibidos
 
     page = request.GET.get('p')
     livros = paginator.get_page(page)
-
+    print(livros)
+    print(type(livros))
     return render(request, 'contas/busca.html',
                   {'livros': livros})
 
