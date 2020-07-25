@@ -29,10 +29,10 @@
         <dt>Prateleira</dt>
         <dd>{{ livro.prateleira }}</dd>
 
-        <dt><a href="{% url 'editor' livro.id %}">Update</a>
+        <dt><a href="{% url 'editor' livro.id %}">Atualizar</a>
         </dt>
         <dt>
-        <a href="#">Delete</a>
+        <a href="{% url 'excluir' livro.id %}">Excluir</a>
         </dl>
 
 {%endblock%}
