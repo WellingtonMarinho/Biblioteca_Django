@@ -15,4 +15,11 @@ urlpatterns = [
     path('sobre/', views.sobre, name='sobre'),
     path('editor/<int:livro_id>', views.editor, name='editor'),
     path('excluir/<int:livro_id>', views.excluir, name='excluir'),
+    path('ordenar-por-titulo/', views.ordenar_por_titulo, name='ordenar_por_titulo'),
+    path('ordenar-por-autor/', views.ordenar_por_autor, name='ordenar_por_autor'),
+    path('ordenar-por-editora/', views.ordenar_por_editora, name='ordenar_por_editora'),
+    path('ordenar-por-categoria/', views.ordenar_por_categoria, name='ordenar_por_categoria'),
+    path('ordenar-por-estante/', views.ordenar_por_estante, name='ordenar_por_estante'),
+    path('ordenar-por-prateleira/', views.ordenar_por_prateleira, name='ordenar_por_prateleira'),
+
 ]

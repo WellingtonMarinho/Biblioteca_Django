@@ -199,3 +199,86 @@ def excluir(request, livro_id):
 
     return redirect('dashboard')
 
+@login_required(login_url='/login/')
+def ordenar_por_titulo(request):
+    livros = Livro.objects.order_by('titulo').filter(
+        mostrar=True
+    )
+    paginator = Paginator(livros, 10)
+
+    page = request.GET.get('p')
+    livros = paginator.get_page(page)
+
+    return render(request, 'contas/dashboard.html',
+                  {'livros': livros})
+
+
+@login_required(login_url='/login/')
+def ordenar_por_autor(request):
+    livros = Livro.objects.order_by('autor').filter(
+        mostrar=True
+    )
+    paginator = Paginator(livros, 10)
+
+    page = request.GET.get('p')
+    livros = paginator.get_page(page)
+
+    return render(request, 'contas/dashboard.html',
+                  {'livros': livros})
+
+
+@login_required(login_url='/login/')
+def ordenar_por_editora(request):
+    livros = Livro.objects.order_by('editora').filter(
+        mostrar=True
+    )
+    paginator = Paginator(livros, 10)
+
+    page = request.GET.get('p')
+    livros = paginator.get_page(page)
+
+    return render(request, 'contas/dashboard.html',
+                  {'livros': livros})
+
+
+@login_required(login_url='/login/')
+def ordenar_por_categoria(request):
+    livros = Livro.objects.order_by('categoria').filter(
+        mostrar=True
+    )
+    paginator = Paginator(livros, 10)
+
+    page = request.GET.get('p')
+    livros = paginator.get_page(page)
+
+    return render(request, 'contas/dashboard.html',
+                  {'livros': livros})
+
+
+@login_required(login_url='/login/')
+def ordenar_por_estante(request):
+    livros = Livro.objects.order_by('estante').filter(
+        mostrar=True
+    )
+    paginator = Paginator(livros, 10)
+
+    page = request.GET.get('p')
+    livros = paginator.get_page(page)
+
+    return render(request, 'contas/dashboard.html',
+                  {'livros': livros})
+
+
+@login_required(login_url='/login/')
+def ordenar_por_prateleira(request):
+    livros = Livro.objects.order_by('prateleira').filter(
+        mostrar=True
+    )
+    paginator = Paginator(livros, 10)
+
+    page = request.GET.get('p')
+    livros = paginator.get_page(page)
+
+    return render(request, 'contas/dashboard.html',
+                  {'livros': livros})
+

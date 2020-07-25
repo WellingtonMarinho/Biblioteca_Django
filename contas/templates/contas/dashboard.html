@@ -45,12 +45,12 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Editora</th>
-            <th>Categoria</th>
-            <th>Estante</th>
-            <th>Prateleira</th>
+            <th><a href="{% url 'ordenar_por_titulo' %}">Título</a></th>
+            <th><a href="{% url 'ordenar_por_autor' %}">Autor</a></th>
+            <th><a href="{% url 'ordenar_por_editora' %}">Editora</a></th>
+            <th><a href="{% url 'ordenar_por_categoria' %}">Categoria</a></th>
+            <th><a href="{% url 'ordenar_por_estante' %}">Estante</a></th>
+            <th><a href="{% url 'ordenar_por_prateleira' %}">Prateleira</a></th>
             <th>Editar</th>
             <th>Excluir</th>
         </tr>
