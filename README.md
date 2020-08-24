@@ -10,6 +10,4 @@ No projeto contamos com um CRUD completo, verificação de usuário existentes, 
 Campo de busca por nome ou autor, que compreende buscas com palavras incompletas, facilitando o uso quando não se tem certeza quanto ao nome completo ou correto.
 
 
-Veja-o rodar no seu navegador. http://34.95.142.170 
-
-Em breve estará hospedado com domínio adequado, por enquanto, segue com o IP.
+Veja-o rodar no seu navegador: https://biblioteca-well.herokuapp.com/
