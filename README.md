@@ -14,7 +14,7 @@ Veja-o rodar no seu navegador: https://biblioteca-well.herokuapp.com/
 
 Faça-o rodar na sua máquina:
 
-  1- git clone https://github.com/WellingtonMarinho13/Consumindo_API_HG_Brasil
+  1- git clone https://github.com/WellingtonMarinho/Biblioteca_Django
   
   2- cd Biblioteca_Django
   
